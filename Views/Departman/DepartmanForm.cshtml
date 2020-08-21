@@ -1,0 +1,57 @@
+﻿@model PersonelMVC.Models.EntityFramework.Departman
+
+
+@{
+    ViewBag.Title = "Kaydet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="mesaj"></div>
+
+@using (Ajax.BeginForm("Kaydet","Departman", new AjaxOptions { HttpMethod="POST", UpdateTargetId="mesaj" }))
+{
+    @Html.AntiForgeryToken()
+    
+// <form method="post" action="">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ad)
+        @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Ad)
+
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+
+    <button type="submit" class="btn btn-success">Ekle</button>
+}
+
+
+    @section scripts
+        {
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        }
+
+
+
+
+
+
+@*
+    @using (Html.BeginForm("Kaydet", "Departman", FormMethod.Post))
+    {
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Ad)
+        @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+
+    </div>
+        @Html.HiddenFor(m=>m.Id)
+
+
+        <button type="submit" class="btn form-group">Kaydet</button>
+
+    }
+
+*@
+
+

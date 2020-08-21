@@ -1,0 +1,25 @@
+﻿
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Personel Yönetim Sistemleri Toplam Gider:
+            @{Html.RenderAction("ToplamMaas", "Personel");}
+            </a>
+            Merhaba @HttpContext.Current.User.Identity.Name
+        </div>
+        <<a class="nav-item nav-link" href="/Departman">Departmanlar</a>
+        <a class="nav-item nav-link" href="/Personel">Personeller</a>
+        
+        @if (User.IsInRole("A"))
+        {
+            <a class="nav-item nav-link" href="/Kullanici">Kullanıcılar</a>
+        }
+
+        <a class="nav-item nav-link" href="/Security/Logout">Çıkış Yap</a>
+        <a class="nav-item nav-link" href="/Security/Login">Giriş Yap</a>
+
+    
+    </div>
+</nav>
+

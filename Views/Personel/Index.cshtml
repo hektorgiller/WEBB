@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ActionLink("Yeni Personel","Yeni",null, new { @class = "btn btn-success" })
+@DateTime.Now
+
+<h2>Personel Listesi</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">Departman</th>
+            <th scope="col">Maas</th>
+            <th scope="col">Dogum Tarihi</th>
+            <th scope="col">Cinsiyet</th>
+            <th scope="col">Evlilik Durumu</th>
+            <th scope="col">"Güncelle"</th>
+            <th scope="col">"Sil"</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personel in Model)
+        {
+        <tr>
+            <td>@personel.Ad</td>
+            <td>@personel.Soyad</td>
+            <td>@personel.Departman.Ad</td>
+            <td>@personel.Maas</td>
+            <td>@personel.DogumTarihi</td>
+            <td>@(personel.Cinsiyet == true ? "Erkek":"Kadın")</td>
+            <td>@(personel.EvliMi == true ? "Evli":"Bekar")</td>
+            <td>@Html.ActionLink("Güncelle", "Guncelle", new { id = personel.Id }, new { @class = "btn btn-success" }) </td>
+            <td>@Html.ActionLink("Sil", "Sil", new { id = personel.Id }, new { @class = "btn btn-danger" }) </td>
+        </tr>
+        }
+        </tbody>
+</table>
+
